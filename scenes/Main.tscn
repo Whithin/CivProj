@@ -1,22 +1,34 @@
-[gd_scene load_steps=19 format=3 uid="uid://d8ki788jkxx1"]
+[gd_scene load_steps=21 format=3 uid="uid://d8ki788jkxx1"]
 
-[ext_resource type="Texture2D" uid="uid://b5ocyp1ota4ow" path="res://assets/TestTileset.png" id="1_dtmet"]
-[ext_resource type="Script" uid="uid://b4x16tyyfihmb" path="res://addons/gaea/nodes/renderers/tilemap_renderer.gd" id="2_vfjjb"]
-[ext_resource type="Script" uid="uid://d4feanreabm81" path="res://addons/gaea/nodes/generator.gd" id="3_ssukr"]
-[ext_resource type="Script" uid="uid://3qsmwhn2sk47" path="res://addons/gaea/resources/gaea_layer.gd" id="4_pr0gy"]
-[ext_resource type="Script" uid="uid://e45byecr4gi6" path="res://addons/gaea/resources/materials/data/tilemap_material.gd" id="5_ja730"]
-[ext_resource type="Script" uid="uid://dae6umbqb872e" path="res://addons/gaea/resources/gaea_graph.gd" id="6_c4vv3"]
-[ext_resource type="Script" uid="uid://d06r24avdgi5g" path="res://addons/gaea/nodes/chunk_loaders/threaded_chunk_loader_2d.gd" id="7_vfjjb"]
-[ext_resource type="Script" uid="uid://cd077jda38l2l" path="res://dev/Player.cs" id="8_ssukr"]
+[ext_resource type="Script" uid="uid://b4x16tyyfihmb" path="res://addons/gaea/nodes/renderers/tilemap_renderer.gd" id="1_jlsqs"]
+[ext_resource type="Script" uid="uid://bsnbphhncu7wk" path="res://dev/WorldGenTileMapLayer.cs" id="2_lhr70"]
+[ext_resource type="Script" uid="uid://d4feanreabm81" path="res://addons/gaea/nodes/generator.gd" id="2_q8u5g"]
+[ext_resource type="Script" uid="uid://3qsmwhn2sk47" path="res://addons/gaea/resources/gaea_layer.gd" id="3_lhr70"]
+[ext_resource type="Script" uid="uid://e45byecr4gi6" path="res://addons/gaea/resources/materials/data/tilemap_material.gd" id="4_wp0k4"]
+[ext_resource type="Script" uid="uid://dae6umbqb872e" path="res://addons/gaea/resources/gaea_graph.gd" id="5_bjd11"]
+[ext_resource type="Script" uid="uid://d06r24avdgi5g" path="res://addons/gaea/nodes/chunk_loaders/threaded_chunk_loader_2d.gd" id="6_qmy6f"]
+[ext_resource type="Texture2D" uid="uid://b5ocyp1ota4ow" path="res://assets/TestTileset.png" id="7_mwfav"]
+[ext_resource type="Script" uid="uid://cd077jda38l2l" path="res://dev/Player.cs" id="8_3p2gp"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qiftg"]
+texture = ExtResource("7_mwfav")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_dej13"]
+sources/0 = SubResource("TileSetAtlasSource_qiftg")
 
 [sub_resource type="Resource" id="Resource_b25w7"]
-script = ExtResource("4_pr0gy")
+script = ExtResource("3_lhr70")
 enabled = true
 metadata/_custom_type_script = "uid://3qsmwhn2sk47"
 
 [sub_resource type="Resource" id="Resource_5k1wu"]
 resource_name = "DarkGrass"
-script = ExtResource("5_ja730")
+script = ExtResource("4_wp0k4")
 type = 0
 source_id = 0
 atlas_coord = Vector2i(0, 0)
@@ -26,7 +38,7 @@ metadata/_custom_type_script = "uid://e45byecr4gi6"
 
 [sub_resource type="Resource" id="Resource_pr0gy"]
 resource_name = "DeepWater"
-script = ExtResource("5_ja730")
+script = ExtResource("4_wp0k4")
 type = 0
 source_id = 0
 atlas_coord = Vector2i(4, 0)
@@ -36,7 +48,7 @@ metadata/_custom_type_script = "uid://e45byecr4gi6"
 
 [sub_resource type="Resource" id="Resource_dtmet"]
 resource_name = "Grass"
-script = ExtResource("5_ja730")
+script = ExtResource("4_wp0k4")
 type = 0
 source_id = 0
 atlas_coord = Vector2i(1, 0)
@@ -46,7 +58,7 @@ metadata/_custom_type_script = "uid://e45byecr4gi6"
 
 [sub_resource type="Resource" id="Resource_vfjjb"]
 resource_name = "Sand"
-script = ExtResource("5_ja730")
+script = ExtResource("4_wp0k4")
 type = 0
 source_id = 0
 atlas_coord = Vector2i(2, 0)
@@ -56,7 +68,7 @@ metadata/_custom_type_script = "uid://e45byecr4gi6"
 
 [sub_resource type="Resource" id="Resource_ssukr"]
 resource_name = "ShallowWater"
-script = ExtResource("5_ja730")
+script = ExtResource("4_wp0k4")
 type = 0
 source_id = 0
 atlas_coord = Vector2i(3, 0)
@@ -66,8 +78,8 @@ metadata/_custom_type_script = "uid://e45byecr4gi6"
 
 [sub_resource type="Resource" id="Resource_t7dmx"]
 resource_local_to_scene = true
-script = ExtResource("6_c4vv3")
-layers = Array[ExtResource("4_pr0gy")]([SubResource("Resource_b25w7")])
+script = ExtResource("5_bjd11")
+layers = Array[ExtResource("3_lhr70")]([SubResource("Resource_b25w7")])
 logging = 0
 connections = Array[Dictionary]([{
 "from_node": 2,
@@ -340,47 +352,42 @@ other = {
 }
 metadata/_custom_type_script = "uid://dae6umbqb872e"
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qiftg"]
-texture = ExtResource("1_dtmet")
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_dej13"]
-sources/0 = SubResource("TileSetAtlasSource_qiftg")
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_vfjjb"]
 
-[node name="WorldGen" type="Node2D"]
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_jlsqs"]
+size = Vector2(50, 50)
 
-[node name="TileMapGaeaRenderer" type="Node" parent="." node_paths=PackedStringArray("tile_map_layers", "generator")]
-script = ExtResource("2_vfjjb")
-tile_map_layers = [NodePath("../TileMapLayer")]
+[node name="Main" type="Node2D"]
+
+[node name="WorldGen" type="Node2D" parent="."]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="WorldGen"]
+tile_set = SubResource("TileSet_dej13")
+script = ExtResource("2_lhr70")
+
+[node name="TileMapGaeaRenderer" type="Node" parent="WorldGen/TileMapLayer" node_paths=PackedStringArray("tile_map_layers", "generator")]
+script = ExtResource("1_jlsqs")
+tile_map_layers = [NodePath("..")]
 generator = NodePath("../GaeaGenerator")
 metadata/_custom_type_script = "uid://b4x16tyyfihmb"
 
-[node name="GaeaGenerator" type="Node" parent="."]
-script = ExtResource("3_ssukr")
+[node name="GaeaGenerator" type="Node" parent="WorldGen/TileMapLayer"]
+script = ExtResource("2_q8u5g")
 data = SubResource("Resource_t7dmx")
 seed = 3903916058
 world_size = Vector3i(0, 0, 1)
 metadata/_custom_type_script = "uid://d4feanreabm81"
 
-[node name="ThreadedChunkLoader2D" type="Node" parent="GaeaGenerator" node_paths=PackedStringArray("generator", "actor")]
-script = ExtResource("7_vfjjb")
+[node name="ThreadedChunkLoader2D" type="Node" parent="WorldGen/TileMapLayer/GaeaGenerator" node_paths=PackedStringArray("generator", "actor")]
+script = ExtResource("6_qmy6f")
 generator = NodePath("..")
-actor = NodePath("../../Player")
-chunk_size = Vector2i(64, 64)
+actor = NodePath("../../../../Player")
+chunk_size = Vector2i(32, 32)
 loading_radius = Vector2i(4, 4)
 metadata/_custom_type_script = "uid://d06r24avdgi5g"
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_set = SubResource("TileSet_dej13")
-
 [node name="Player" type="CharacterBody2D" parent="."]
-script = ExtResource("8_ssukr")
+script = ExtResource("8_3p2gp")
 
 [node name="PlayerCollider" type="CollisionShape2D" parent="Player"]
 shape = SubResource("CircleShape2D_vfjjb")
@@ -388,3 +395,6 @@ debug_color = Color(0.801103, 0.338299, 0.642547, 0.42)
 
 [node name="PlayerCam" type="Camera2D" parent="Player"]
 position_smoothing_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = SubResource("PlaceholderTexture2D_jlsqs")
