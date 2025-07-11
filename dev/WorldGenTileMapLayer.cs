@@ -12,9 +12,24 @@ public partial class WorldGenTileMapLayer : TileMapLayer
             var tileData = GetCellTileData(cell);
             if (tileData != null)
             {
+
+            }
+        }
+    }
+    
+    public override void _Draw()
+    {
+        var chunkRoot = GetNode("World/Chunks/Chunk_0_0"); // chemin vers un chunk
+        var tileMapLayer = chunkRoot.GetNode<TileMapLayer>("TileMapLayer");
+
+        
+        foreach (var cell in GetUsedCells())
+        {
+            var tileData = GetCellTileData(cell);
+            if (tileData != null)
+            {
                 
             }
         }
-        
     }
 }
